@@ -13,21 +13,10 @@ if(isset($_POST["wordbox"])) {
 header("Location: index.php");
 
 function isPalindrome(string $word) : string {
+    $word = implode(array_filter(str_split($word), "ctype_alnum"));
     if($word === "")
         return "No";
-    for($i = 0, $j = strlen($word) - 1; $i <= $j; $i++, $j--) {
-        if(!ctype_alnum($word[$i])) {
-            $j++;
-            continue;
-        }
-        if(!ctype_alnum($word[$j])) {
-            $i--;
-            continue;
-        }
-        if(strtolower($word[$i]) !== strtolower($word[$j]))
-            return "No";
-    }
-    return "Yes";
+    return strtolower($word) === strtolower(strrev($word)) ? "Yes" : "No";
 }
 
 function vowelCount(string $word) : int {
