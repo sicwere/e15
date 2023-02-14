@@ -5,21 +5,29 @@ session_start();
 if(isset($_POST["wordbox"])) {
     $_SESSION["results"] = [
         "word" => $_POST["wordbox"],
-        "palindrome" => isPalindrome($_POST["word"]),
-        "vowel_count" => vowelCount($_POST["word"])
+        "palindrome" => isPalindrome($_POST["wordbox"]),
+        "vowel_count" => vowelCount($_POST["wordbox"])
     ];
 }
 
 header("Location: index.php");
 
-function isPalindrome(string $word) : bool {
+function isPalindrome(string $word) : string {
     if($word === "")
-        return false;
-    for($i = 0, $j = strlen($word); $i <= $j; $i++, $j--) {
-        if($word[$i] !== $word[$j])
-            return false;
+        return "No";
+    for($i = 0, $j = strlen($word) - 1; $i <= $j; $i++, $j--) {
+        if(!ctype_alnum($word[$i])) {
+            $j++;
+            continue;
+        }
+        if(!ctype_alnum($word[$j])) {
+            $i--;
+            continue;
+        }
+        if(strtolower($word[$i]) !== strtolower($word[$j]))
+            return "No";
     }
-    return true;
+    return "Yes";
 }
 
 function vowelCount(string $word) : int {

@@ -4,7 +4,7 @@
     $word = $_SESSION["results"]["word"] ?? "";
     
     if($word !== "") {
-        $isPalindrome = $_SESSION["results"]["palindrome"];
+        $is_palindrome = $_SESSION["results"]["palindrome"];
         $vowel_count = $_SESSION["results"]["vowel_count"];
     }
 
