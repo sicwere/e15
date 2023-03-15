@@ -75,24 +75,25 @@ BMI Calculator
 <form method="GET" action="/search">
     <div class="row">
         <label for="height" class="cell">Enter height (in meters or inches):</label>
-        <input type="number" class="cell" id="height" name="height" step="0.01" value="{{ $height }}">
+        <input type="number" class="cell" id="height" name="height" step="0.01" value="{{ old("height") }}">
     </div>
     <div class="row">
         <label for="weight" class="cell">Enter weight (in kilograms or pounds):</label>
-        <input type="number" class="cell" id="weight" name="weight" step="0.01" value="{{ $weight }}">
+        <input type="number" class="cell" id="weight" name="weight" step="0.01" value="{{ old("weight") }}">
     </div>
     <div class="row">
         <label class="cell">
             Standard: <input type="radio" name="units" value="Standard"
-                {{ ($units == 'Standard' or is_null($units)) ? 'checked' : '' }}></input>
+                {{ old("units") === 'Standard' ? 'checked' : '' }}></input>
         </label>
         <label class="cell">
-            Metric: <input type="radio" name="units" value="Metric" {{ $units == 'Metric' ? 'checked' : '' }}></input>
+            Metric: <input type="radio" name="units" value="Metric"
+                {{ old("units") === 'Metric' ? 'checked' : '' }}></input>
         </label>
     </div>
     <div class="row">
         <label for="categories" class="cell">Show category:</label>
-        <input type="checkbox" name="categories" {{ $categories ? 'checked' : '' }}></input>
+        <input type="checkbox" name="categories" {{ old("categories") ? 'checked' : '' }}></input>
     </div>
     <button type=" submit">Calculate</button>
 </form>
