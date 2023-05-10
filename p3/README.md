@@ -1,6 +1,6 @@
 ## Project 3
 
- By: Scott ferguson
+ By: Scott Ferguson
  Production URL: http://e15p3.sicwere.online
 
 ## Feature summary
@@ -17,7 +17,7 @@
 My application has 2 tables in total (users, bmis)
 There's a one-to-many relationship between users and bmis
 
-### Outside resources
+## Outside resources
 
 https://larapex-charts.netlify.app/
 https://laravel.com/docs/10.x/readme
